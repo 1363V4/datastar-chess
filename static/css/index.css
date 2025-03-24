@@ -1,0 +1,135 @@
+@import url(/static/css/gold.css);
+
+.matemasie-regular {
+    font-family: "Matemasie", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.chela-one-regular {
+    font-family: "Chela One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}  
+  
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6B7280;
+    --accent-color: #3B82F6;
+    --background-color: #F9fafb;
+    --text-color: #1F2937;
+}
+
+body {
+    background: linear-gradient(90deg, var(--background-color), var(--secondary-color));
+    background-size: 200% 200%;
+    animation: flow 15s ease infinite;
+    min-height: 100vh;
+    color: var(--text-color);
+    font-family: "Matemasie";
+}
+
+@keyframes flow {
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.card {
+    background-color: var(--secondary-color);
+    border-radius: var(--m);
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: var(--primary-color);
+    scale: 1.01;
+    transition: linear .2s;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    aspect-ratio: 1/1;
+    min-width: min(90vw, 400px);
+    rotate: y .5turn;
+    filter: drop-shadow(0px 0px 20px var(--background-color));
+}
+
+.square {
+    cursor: pointer;
+}
+.square.white {
+    color: var(--secondary-color);
+    background-color: var(--secondary-color);
+}
+.square.black {
+    color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+.square:hover {
+    background-color: hsl(from currentColor h s 40);
+}
+.square[clicked] {
+    background-color: olive;
+}
+.square[possible] {
+    background-color: hsl(from currentColor h s 60);
+}
+.square[possible]:hover {
+    background-color: salmon;
+}
+   
+img {
+    rotate: y .5turn;    
+}
+
+button {
+    background-color: var(--secondary-color);
+    border-radius: var(--m);
+    cursor: pointer;
+}
+
+.room-name {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: 6px solid var(--secondary-color);
+    border-radius: 2rem;
+    padding-inline: .5rem;
+    margin-bottom: 1rem;
+}
+
+.player-card {
+    display: flex;
+    gap: 1rem;
+    color: black;
+    font-family: "Chelo One";
+    font-weight: bold;
+}
+
+.player-card > div {
+    width: fit-content;
+    border: 2px solid var(--primary-color);
+    border-radius: 2rem;
+    padding-inline: .5rem;
+    margin-block: .4rem;
+}
+
+.player-bubble {
+    background-color: var(--secondary-color);
+}
+
+#player1 {
+    color: white;
+    place-content: end;
+}
+.game-info {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+}
+
+.game-over {
+    background-color: var(--background-color);
+    color: olive;
+}

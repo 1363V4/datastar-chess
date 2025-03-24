@@ -1,0 +1,192 @@
+@layer reset, default, layouts, utilities;
+
+/* stole daisy ui reset */
+@layer reset {
+	*,:after,::backdrop,:before,::file-selector-button{
+		box-sizing:border-box;
+		border:0 solid;
+		margin:0;
+		padding:0
+	}
+	:host,html{
+		line-height:1.5;
+		font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");
+		-webkit-tap-highlight-color:transparent
+	}
+	body {
+		line-height: inherit;
+	}
+	hr {
+		height: 0;
+		color: inherit;
+		border-top-width: 1px;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-size: inherit;
+		font-weight: inherit;
+	}
+	a {
+		color: inherit;
+		-webkit-text-decoration: inherit;
+		text-decoration: inherit;
+	}
+	table {
+		text-indent: 0;
+		border-color: inherit;
+		border-collapse: collapse;
+	}
+	::file-selector-button, button, input, optgroup, select, textarea {
+		font: inherit;
+		font-feature-settings: inherit;
+		font-variation-settings: inherit;
+		letter-spacing: inherit;
+		color: inherit;
+		background: 0 0;
+	}
+	input:where(:not([type=button],[type=reset],[type=submit])), select, textarea {
+		border-width: 1px;
+	}
+	::file-selector-button, button, input:where([type=button],[type=reset],[type=submit]) {
+		appearance: button;
+	}
+	:-moz-focusring {
+		outline: auto;
+	}
+	:-moz-ui-invalid {
+		box-shadow: none;
+	}
+	::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+	menu, ol, ul {
+		list-style: none;
+	}
+	textarea {
+		resize: vertical;
+	}
+	::placeholder {
+		opacity: 1;
+		color: color-mix(in oklch, currentColor 50%, transparent);
+	}
+	audio, canvas, embed, iframe, img, object, svg, video {
+		display: block;
+	}
+	img, video {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+@layer default {
+	:root {
+		--phi: calc((1 + sqrt(5)) / 2);
+		--m: 1rem;
+		--xs: calc(var(--m) * pow(var(--phi), -2));
+		--s: calc(var(--m) * pow(var(--phi), -1));
+		--l: calc(var(--m) * pow(var(--phi), 1));
+		--xl: calc(var(--m) * pow(var(--phi), 2));
+		--xxl: calc(var(--m) * pow(var(--phi), 3));
+	}
+}
+
+@layer layouts {
+	/* center shit */
+	.gc {
+		display: grid;
+        place-content: center;
+        place-items: center;
+    }
+
+	/* stack shit */
+    .gz {
+		display: grid;
+    }
+    .gz > * {
+		grid-area: 1/1;
+    }
+
+	/* stretch shit */
+	.gs {
+		align-content: stretch;
+		place-items: stretch;
+	}
+
+	/* golden grids */
+	.g01 {
+		display: grid;
+		grid-template-columns: 1fr 1.618fr;
+		grid-auto-rows: 1fr;
+	}	
+	.g10 {
+		display: grid;
+		grid-template-columns: 1.618fr 1fr;
+		grid-auto-rows: 1fr;
+	}	
+	.g01v {
+		display: grid;
+		grid-template-rows: 1fr 1.618fr;
+		grid-auto-columns: 1fr;
+	}	
+	.g10v {
+		display: grid;
+		grid-template-rows: 1.618fr 1fr;
+		grid-auto-columns: 1fr;
+	}
+	
+	/* shitty sidebars, if you really have to */
+	.gf01 {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.gf01 > :first-child {
+		flex: 1;
+	}
+	.gf01 > :last-child {
+		flex: var(--phi);
+	}
+	.gf10 {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.gf10 > :first-child {
+		flex: var(--phi);
+	}
+	.gf10 > :last-child {
+		flex: 1;
+	}
+}
+
+@layer utilities {
+	.gw {
+		width: 61.8%;
+	}
+
+	.gp {
+		padding: 19%;
+	}
+	.gm {
+		margin: 19%;
+	}
+	
+	/* text shit */
+	.gt {
+		&.xs {
+			font-size: var(--xs);
+		}
+		&.s {
+			font-size: var(--s);
+		}
+		&.m {
+			font-size: var(--m);
+		}
+		&.l {
+			font-size: var(--l);
+		}
+		&.xl {
+			font-size: var(--xl);
+		}
+		&.xxl {
+			font-size: var(--xxl);
+		}
+	}
+}
